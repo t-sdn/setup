@@ -27,6 +27,7 @@ if [ -x ~/.m2/settings.xml ]; then
     mv ~/.m2/settings.xml{,.bak}
 fi
 mkdir -p ~/.m2
+chown -R $SUDO_USER:$SUDOUSER ~/.m2
 curl -sSL -o ~/.m2/settings.xml \
     https://raw.githubusercontent.com/opendaylight/odlparent/master/settings.xml
 
