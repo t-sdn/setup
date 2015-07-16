@@ -8,7 +8,8 @@ if [ $EUID -ne 0 ]; then
 fi
 
 # Update repository
-apt-get update
+echo "Update repository ..."
+apt-get update -qq
 
 # Install dependencies
 echo "Installing JDK and other dependencies ..."
