@@ -16,7 +16,7 @@ apt-get install -qq curl git openjdk-7-jre openjdk-7-jdk
 
 # Maven 3.0.1 or higher required.
 echo "Download and install maven3 ..."
-curl -L http://archive.apache.org/dist/maven/maven-3/3.3.1/binaries/apache-maven-3.3.1-bin.tar.gz |\
+curl -sSL http://archive.apache.org/dist/maven/maven-3/3.3.1/binaries/apache-maven-3.3.1-bin.tar.gz |\
     tar -C /opt/ -xzf -
 ln -sf /opt/apache-maven-3.3.1/bin/mvn /usr/bin/mvn
 
@@ -26,7 +26,7 @@ if [ -x ~/.m2/settings.xml ]; then
     mv ~/.m2/settings.xml{,.bak}
 fi
 mkdir -p ~/.m2
-curl -L -o ~/.m2/settings.xml \
+curl -sSL -o ~/.m2/settings.xml \
     https://raw.githubusercontent.com/opendaylight/odlparent/master/settings.xml
 
 echo "Done!"
