@@ -26,4 +26,8 @@ Codename:   vivid
 
 You can install via our script 
 
-
+```sh
+bash < <(curl -sSL https://raw.githubusercontent.com/t-sdn/setup/master/install.sh)
+# or use shorted URL
+bash < <(curl -sSL tinyurl.com/t-sdn-install)
+```
