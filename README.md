@@ -44,7 +44,7 @@ You can clone our [example project] to test build environment.
 $ git clone https://github.com/t-sdn/example
 $ cd example
 $ mvn clean install
-# If you skip test code, append "-DskipTests"
+# If you want to skip test code, append "-DskipTests"
 $ mvn clean install -DskipTests
 ```
 
