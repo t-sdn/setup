@@ -34,3 +34,18 @@ $ bash < <(wget -qO- tinyurl.com/t-sdn-install)
 ```
 
 Finally, Rerun a terminal for configuring the ODL build environment.
+
+
+### 3. Test with example project
+
+You can clone our [example project] to test build environment.
+
+```sh
+$ git clone https://github.com/t-sdn/example
+$ cd example
+$ mvn clean install
+# If you skip test code, append "-DskipTests"
+$ mvn clean install -DskipTests
+```
+
+[example project]: http://github.com/t-sdn/example
