@@ -1,4 +1,4 @@
-Initial setup guide for Opendaylight
+Initial setup guide for OpenDaylight
 ====================================
 
 Instructions
