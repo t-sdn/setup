@@ -31,4 +31,8 @@ chown -R $SUDO_USER:$SUDOUSER ~/.m2
 curl -sSL -o ~/.m2/settings.xml \
     https://raw.githubusercontent.com/opendaylight/odlparent/master/settings.xml
 
+# Setting maven opts
+echo "Setting maven options to profile ..."
+echo "export MAVEN_OPTS='-Xmx1048m -XX:MaxPermSize=1024m'" | tee -a ~/.bashrc
+
 echo "Done!"
