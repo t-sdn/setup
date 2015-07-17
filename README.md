@@ -32,3 +32,5 @@ $ bash < <(wget -qO- https://raw.githubusercontent.com/t-sdn/setup/master/instal
 # Or use shorted URL
 $ bash < <(wget -qO- tinyurl.com/t-sdn-install)
 ```
+
+Finally, Rerun a terminal for configuring the ODL build environment.
