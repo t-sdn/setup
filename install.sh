@@ -3,7 +3,14 @@
 # Check the current user is root or not.
 if [ $EUID -ne 0 ]; then
     echo "You're not root user. using sudo to continue."
-    sudo $0 -s $*
+    case $0 in
+        bash)
+            sudo $0 -s $*
+            ;;
+        *)
+            sudo bash $0 $*
+            ;;
+    esac
     exit 0
 fi
 
