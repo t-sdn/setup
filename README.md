@@ -33,7 +33,12 @@ $ bash < <(wget -qO- https://raw.githubusercontent.com/t-sdn/setup/master/instal
 $ bash < <(wget -qO- tinyurl.com/t-sdn-install)
 ```
 
-Finally, Rerun a terminal for configuring the ODL build environment.
+Finally, Reload environment or rerun a terminal for configuring the ODL build
+environment.
+
+```sh
+$ source ~/.bashrc
+```
 
 
 ### 3. Test with example project
