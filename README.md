@@ -49,3 +49,19 @@ $ mvn clean install -DskipTests
 ```
 
 [example project]: http://github.com/t-sdn/example
+
+
+#### 3.1 Test with OpenDaylight controller
+
+Now, try to build Opendaylight controller.
+
+> Caution: OpenDaylight is a huge project. So you need very long time to build it.
+> It consumes almost 2 hours on my machine at the first time.
+
+```sh
+# First, clone OpenDaylight repository
+$ git clone https://github.com/opendaylight/controller opendaylight-controller
+$ cd !$
+# Build with same method
+$ mvn clean install -DskipTests
+```
