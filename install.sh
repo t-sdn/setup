@@ -14,17 +14,29 @@ if [ $EUID -ne 0 ]; then
     exit 0
 fi
 
+checkpackages() {
+    for prg in $*; do
+        hash $prg 2>/dev/null || return 1
+    done
+
+    return 0
+}
+
 versiongte() {
     [ "$1" = "$(echo -e "$1\n$2" | sort -V | tail -n1)" ]
 }
 
-# Update repository
-echo "Update repository ..."
-apt-get update -qq
+if ! checkpackages curl git javac; then
+    # Update repository
+    echo "Update repository ..."
+    apt-get update -qq
 
-# Install dependencies
-echo "Installing JDK and other dependencies ..."
-apt-get install -qq curl git openjdk-7-jre openjdk-7-jdk
+    # Install dependencies
+    echo "Installing JDK and other dependencies ..."
+    apt-get install -qq curl git openjdk-7-jre openjdk-7-jdk
+else
+    echo "Dependencies are already installed"
+fi
 
 # Maven 3.0.1 or higher required.
 mvn_version=$(mvn -v 2>/dev/null | grep 'Apache Maven' | awk '{print $3}')
