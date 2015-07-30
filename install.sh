@@ -48,7 +48,11 @@ curl -sSL -o ~/.m2/settings.xml \
     https://raw.githubusercontent.com/opendaylight/odlparent/master/settings.xml
 
 # Setting maven opts
-echo "Setting maven options to profile ..."
-echo "export MAVEN_OPTS='-Xmx1048m -XX:MaxPermSize=1024m'" >> ~/.bashrc
+if ! grep MAVEN_OPTS ~/.bashrc >/dev/null; then
+    echo "Setting maven options to profile ..."
+    echo "export MAVEN_OPTS='-Xmx1048m -XX:MaxPermSize=1024m'" >> ~/.bashrc
+else
+    echo "Maven option is already given."
+fi
 
 echo "Done!"
