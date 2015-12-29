@@ -26,6 +26,14 @@ versiongte() {
     [ "$1" = "$(echo -e "$1\n$2" | sort -V | tail -n1)" ]
 }
 
+install_maven() {
+    version=$1
+    echo "Download and install maven ${version} ..."
+    curl -sSL http://archive.apache.org/dist/maven/maven-3/${version}/binaries/apache-maven-${version}-bin.tar.gz |\
+        tar -C /opt/ -xzf -
+    ln -sf /opt/apache-maven-${version}/bin/mvn /usr/bin/mvn
+}
+
 if ! checkpackages curl git javac; then
     # Update repository
     echo "Update repository ..."
@@ -39,21 +47,12 @@ else
 fi
 
 # Maven 3.0.1 or higher required.
-if [ -x /usr/bin/mvn ]; then
-    mvn_version=$(mvn -v 2>/dev/null | grep 'Apache Maven' | awk '{print $3}')
-    if ! versiongte $mvn_version 3.0.1; then
-        echo "Download and install maven3 ..."
-        curl -sSL http://archive.apache.org/dist/maven/maven-3/3.3.1/binaries/apache-maven-3.3.1-bin.tar.gz |\
-            tar -C /opt/ -xzf -
-        ln -sf /opt/apache-maven-3.3.1/bin/mvn /usr/bin/mvn
-    else
-        echo "Required maven version is already installed."
-    fi
+mvn_version_to_install='3.3.9'
+mvn_version=$(mvn -v 2>/dev/null | grep 'Apache Maven' | awk '{print $3}')
+if hash mvn && versiongte $mvn_version '3.0.1'; then
+    echo "Required maven version is already installed."
 else
-    echo "Download and install maven3 ..."
-    curl -sSL http://archive.apache.org/dist/maven/maven-3/3.3.1/binaries/apache-maven-3.3.1-bin.tar.gz |\
-        tar -C /opt/ -xzf -
-    ln -sf /opt/apache-maven-3.3.1/bin/mvn /usr/bin/mvn
+    install_maven $mvn_version_to_install
 fi
 
 # Copy maven settings
